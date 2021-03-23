@@ -1,4 +1,4 @@
-#include "Headers/Gamesetup.h"
+#include "Gamesetup.h"
 //Function calls for header file within a folder "headers" for file "gamesetup.h"
 
 using namespace std;

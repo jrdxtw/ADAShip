@@ -1,7 +1,5 @@
-#include "Headers/GamerVComputer.h"
+#include "GamerVComputer.h"
 //Function calls for header file within a folder "header" for file "helpers.h"
-
-using namespace std;
 
 int player_turn_menu() 
 {
@@ -11,7 +9,7 @@ int player_turn_menu()
   if( ! (cin >> menu_choice))
    { 
   //catching erroneous input
-    cout << "\n This is an Invalid input! \n";
+    std::cout << "\n This is an Invalid input! \n" << endl;
     cin.clear(); 
   //clearing the error from cin stream
     cin.ignore(10000, '\n');
@@ -32,11 +30,11 @@ int player1_turn(Boats &player1, Boats &enemy)
   int boat_hit, won = 0; 
   // (1) = won the game, (-1) = quit, (0) = not won
 
-  cout << "\n Your ship board:\n";
+  std::cout << "\n Your battleship board:\n" << endl;
   player1.print_ship_board();
   //Prints your board and the ships that are placed on them
 
-  cout << "\n Your target board:\n";
+  std::cout << "\n Your player target board:\n" << endl;
   enemy.print_target_board();
   //Prints your targetboard so you are able to view it
 
@@ -50,7 +48,7 @@ int player1_turn(Boats &player1, Boats &enemy)
         valid_menu_choice = true;
         while (valid_coordinate == false)
          {
-          cout << "\n\n Enter your coordinates to fire at opponenet! : ";
+          std::cout << "\n\n Enter your coordinates to fire at opponenet! : " << endl;
           //Prints message to indicate to user to enter coordinates to complete attack
           getline(cin, coordinate_str);
           try 
@@ -58,14 +56,14 @@ int player1_turn(Boats &player1, Boats &enemy)
             coordinate = enemy.format_coordinate(coordinate_str);
           } catch(int error)
            {
-            cout << "\n Invalid coordinate: format needs to be LetterNumber e.g. A9 \n";
+            std::cout << "\n Invalid coordinate: format needs to be LetterNumber, for example:E4 \n" << endl;
             //Prints message to inform user that the format is wrong and that they are required to use the following method of a LetterNumber sequence in order to attack.
             continue;
           }
           returnCode = enemy.valid_coordinate(coordinate);
           if (returnCode == false) 
           {
-            cout << "\n Invalid coordinate: out of board range \n";
+            std::cout << "\n Invalid coordinate position , board range out of bound! \n" << endl;
             //Prints message to inform user that the attack set by them is out of range and to try again.
             continue;
           }
@@ -78,7 +76,7 @@ int player1_turn(Boats &player1, Boats &enemy)
         boat_hit = enemy.auto_fire();
         break;
       default:
-        cout << "\n Thats an invalid option \n";
+        std::cout << "\n Thats an invalid option \n" << endl;
         //Prints message to user that its an valid option
         valid_menu_choice = false;
         break;
@@ -91,7 +89,7 @@ int player1_turn(Boats &player1, Boats &enemy)
   if (boat_hit > -1) {
     if(enemy.boat_sank(boat_hit))
     {
-      cout << "The boat has been sank! \n";
+      std::cout << "The boat has been sank! \n" << endl;
       //Informing the player that the opponenet's boat has sunk
       if(enemy.all_boats_sank()) 
       {

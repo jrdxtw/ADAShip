@@ -1,4 +1,4 @@
-#include "Headers/Boats.h"
+#include "Boats.h"
 //Function calls for header file within a folder "headers" for file "boats.h"
 
 using namespace std;
@@ -19,23 +19,23 @@ void Boats::auto_place_ship(int ship_index)
 
     boat_direction = rand() % 2;
     
-    // valid_placement = true;
-    if(boat_direction == 0)
-    { 
-    //Initialising horizontal dimension
-      for(int x=coordinates[0]; x<coordinates[0]+boats[ship_index].size; x++) 
+  // valid_placement = true;
+  if(boat_direction == 0)
+  { 
+  //Initialising horizontal dimension
+    for(int x=coordinates[0]; x<coordinates[0]+boats[ship_index].size; x++) 
+    {
+      if (!valid_boat_placement({x, coordinates[1]})) 
       {
-        if (!valid_boat_placement({x, coordinates[1]})) 
-        {
-          valid_placement = false;
-          break;
-        }
-        else 
-        {
-          valid_placement = true;
-        }
+        valid_placement = false;
+      break;
       }
-    }
+      else 
+      {
+      valid_placement = true;
+      }
+    } 
+  }
     else 
     {
       for(int y=coordinates[1]; y<coordinates[1]+boats[ship_index].size; y++) 

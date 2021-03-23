@@ -1,6 +1,5 @@
-#include "Headers/main.h"
+#include "main.h"
 //importing the following header file "main.h"
-using namespace std;
 
 int playerVcomp() 
 {
@@ -26,23 +25,23 @@ int playerVcomp()
 int main() {
   int menu_choice = -1, return_code_1;
 
-  cout << "▄▀█ █▀▄ ▄▀█ █▀ █ █ █ █▀█" << endl;
-  cout << "█▀█ █▄▀ █▀█ ▄█ █▀█ █ █▀▀" << endl;
+  std::cout << "▄▀█ █▀▄ ▄▀█ █▀ █ █ █ █▀█" << endl;
+  std::cout << "█▀█ █▄▀ █▀█ ▄█ █▀█ █ █▀▀" << endl;
   //Prints a graphic into menu system
 
-  cout << "\n\n";
+  std::cout << "\n\n";
  
-  cout << "Welcome to Adaships Battleship!" << endl;
+  std::cout << "Welcome to ADASHIP Battleship!" << endl;
   //Prints the following message within the menu
 
   while (menu_choice != 0) 
   {
-    cout << "1. One player V computer game\n\nPlease select an option (or 0 to quit): ";
+    std::cout << "1. One player V Computer game\n\n Please select 1 for following gamemode (or 0 to quit): " << endl;
     //Prints the game mode 
     if( ! (cin >> menu_choice)) 
     { 
     //catching erroneous input
-      cout << "Invalid input\n";
+      std::cout << " Coordinates input are not valid! \n" << endl;
       cin.clear();
     //clearing the error from cin stream
       cin.ignore(10000, '\n');
@@ -65,10 +64,10 @@ int main() {
         break;
       
       default:
-        cout << "\nInvalid Input, please try again...\n";
+        std::cout << "\n Coordinates input is invalid, please try again...\n" << endl;
         //Printed the following message to indicate to try again
         break;
     }
   }
-  cout << "\nGood bye\n";
+  std::cout << "\n Thanks for Playing! \n";
 }

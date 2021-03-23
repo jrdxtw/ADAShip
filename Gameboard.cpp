@@ -1,6 +1,5 @@
-#include "Headers/Gameboard.h"
-//Function calls for header file within a folder "headers" for file "gameboard.h"
-using namespace std;
+#include "Gameboard.h"
+//Function calls for header file within a folder "headers" for file "Gameboard.h"
 
 void Board::load_data() 
 {
@@ -8,7 +7,7 @@ void Board::load_data()
   int counter = 0;
 
   ifstream game_config("adaship_config.ini"); 
-//This function initiatied the opening data file to read it for the "board.cpp"
+//This function initiatied the opening data file to read it for the "Gameboard.cpp"
 
   while (getline(getline(game_config, type, ':'), data))
   { 
@@ -63,31 +62,31 @@ void Board::print_ship_board()
   { 
   //function introduced coordinates for number functionality
     if (a>=26 && a<52){
-      cout << setw(3) << 'A' << (char)((a-26)+'A');
+      std::cout << setw(3) << 'A' << (char)((a-26)+'A') << endl;
     }
     else if (a>=52 && a<78) {
-      cout << setw(3) << 'B' << (char)((a-52)+'A');
+      std::cout << setw(3) << 'B' << (char)((a-52)+'A') << endl;
     }
     else if (a>=78) {
-      cout << setw(3) << 'C' << (char)((a-78)+'A');
+      std::cout << setw(3) << 'C' << (char)((a-78)+'A') << endl;
     }
     else 
     {
-      cout << setw(3) << " " << (char)(a +'A') ;
+      std::cout << setw(3) << " " << (char)(a +'A') << endl;
     }
   }
-  cout << endl;
+  std::cout << endl;
 
   for(int j = 0; j < board_size; j++)
    { 
   //Function for coordinates for letter position and functionality 
     if(j >= 9)
     {
-      cout << j+1;
+      std::cout << j+1;
     }
     else
     {
-      cout << " " << j+1;
+      std::cout << " " << j+1 << endl;
     }
 
     for(int i = 0; i < board_size ; i++) 
@@ -96,19 +95,19 @@ void Board::print_ship_board()
 
       if(board[i][counter] == empty) 
       {
-        cout << setw(4) << " |" ;
+        std::cout << setw(4) << " |" ;
       }
       else {
         boat_name = boats[(board[i][counter])-1].name;
         boat_initial = toupper(boat_name[0]);
 
-        cout << setw(2) << boat_initial << setw(2) << "|";
+        std::cout << setw(2) << boat_initial << setw(2) << "|";
       }
     }
-    cout << "\n";
+    std::cout << "\n" << endl;
     counter ++;
   }
-  cout << "\n";
+  std::cout << "\n" << endl;
 };
 
 void Board::print_target_board() 
@@ -127,32 +126,32 @@ void Board::print_target_board()
   //Function for coordinates for numbers functionality
     if (a>=26 && a<52)
     {
-      cout << setw(3) << 'A' << (char)((a-26)+'A');
+      std::cout << setw(3) << 'A' << (char)((a-26)+'A') << endl;
     }
     else if (a>=52 && a<78) 
     {
-      cout << setw(3) << 'B' << (char)((a-52)+'A');
+      std::cout << setw(3) << 'B' << (char)((a-52)+'A')<< endl;
     }
     else if (a>=78) 
     {
-      cout << setw(3) << 'C' << (char)((a-78)+'A');
+      std::cout << setw(3) << 'C' << (char)((a-78)+'A') << endl;
     }
     else 
     {
-      cout << setw(3) << " " << (char)(a +'A') ;
+      std::cout << setw(3) << " " << (char)(a +'A') << endl;
     }
   }
-  cout << endl;
+  std::cout << endl;
 
   for(int j = 0; j < board_size; j++)
    { 
     //Function for coordinates for letter functionality
     if(j >= 9)
     {
-      cout << j+1;
+      std::cout << j+1 << endl;
     }
     else {
-      cout << " " << j+1;
+      std::cout << " " << j+1 << endl;
     }
 
     for(int i = 0; i < board_size ; i++) 
@@ -160,21 +159,21 @@ void Board::print_target_board()
 
       if(board[i][counter] == miss )
       {
-        cout << setw(2) << "M" << setw(2) << "|";
+        std::cout << setw(2) << "M" << setw(2) << "|" << endl;
       }
       else if(board[i][counter] == hit ) 
       {
-        cout << setw(2) << "H" << setw(2) << "|";;
+        std::cout << setw(2) << "H" << setw(2) << "|"<< endl;
       }
       else 
       {
-        cout << setw(4) << " |";
+        std::cout << setw(4) << " |" << endl;
       }
     }
-    cout << "\n";
+    std::cout << "\n"<< endl;
     counter++;
   }
-  cout << "\n";
+  std::cout << "\n"<< endl;
 };
 
 vector<int> Board::format_coordinate(string coordinates) 
@@ -241,16 +240,16 @@ int Board::fire(vector<int> coordinate)
 
   if (board[coordinate[0]][coordinate[1]] == 0) 
   {
-    cout << "\n MISS \n";
+    std::cout << "\n BATTLESHIP MISSED! \n" << endl;
     board[coordinate[0]][coordinate[1]] = -1;
   }
   else if (board[coordinate[0]][coordinate[1]] < 0) 
   {
-    cout << "\n You have already fired there \n";
+    std::cout << "\n You have already fired there,Try another region \n" << endl;
   }
   else if (board[coordinate[0]][coordinate[1]] > 0)
   {
-    cout <<"\n HIT \n";
+    std::cout <<"\n BATTLESHIP HIT! \n" << endl;
     board[coordinate[0]][coordinate[1]] = -2;
     boats[boat_num-1].hits ++;
     return_num = boat_num-1;
@@ -271,6 +270,7 @@ bool Board::is_valid_target(vector<int> _coordinate)
   }
   return false;
 }
+
 
 int Board::auto_fire() 
 {
