@@ -82,7 +82,7 @@ void Board::print_ship_board()
   //Function for coordinates for letter position and functionality 
     if(j >= 9)
     {
-      std::cout << j+1;
+      std::cout << j+1 << endl;
     }
     else
     {
