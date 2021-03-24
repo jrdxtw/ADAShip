@@ -6,7 +6,7 @@
 #include <cctype> 
   //"cctype" declares a set of functions to classify (and transform) individual characters. For example, isupper() checks whether a character is uppercase or not.
 
-using namespace std;
+
 
 string lowercase_word(string word);
 
