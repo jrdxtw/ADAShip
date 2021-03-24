@@ -11,5 +11,5 @@ string lowercase_word(string word)
     lowercase_word += tolower(word[i]);
   }
   return lowercase_word;
-  //retuns the value
+  //retuns the characters
 };
