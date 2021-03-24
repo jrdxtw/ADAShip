@@ -1,7 +1,7 @@
 #pragma once
   //"Pragama once" is introduced to cause the current source file to be included only once in a single compilation.
 #include <iostream>
-  //Function defines the standard devices cin, cout, clog, ceer; 
+  //Function defines the standard devices cin, cout, clog, ceer; etc 
 #include <stdlib.h> 
   //function is introduced for set width setw for "main.h"
 #include <iomanip> 
