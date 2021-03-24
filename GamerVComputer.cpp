@@ -86,14 +86,15 @@ int player1_turn(Boats &player1, Boats &enemy)
   cout << "\n Your target board:\n";
   enemy.print_target_board();
 
-  if (boat_hit > -1) {
+if (boat_hit > -1)
+ {
     if(enemy.boat_sank(boat_hit))
     {
       std::cout << "The boat has been sank! \n" << endl;
       //Informing the player that the opponenet's boat has sunk
       if(enemy.all_boats_sank()) 
       {
-        cout << "All boats have sank! \n";
+        std::cout << "All boats have sank! \n" << endl;
         won = 1;
         //Informing the player that all boats have sunk
       }
@@ -102,7 +103,7 @@ int player1_turn(Boats &player1, Boats &enemy)
   
   if (won != 1) 
   {
-    cout << "\n Press enter to end your turn...";
+    std::cout << "\n Press enter to complete your turn!" << endl;
     char temp = cin.get();
     cin.clear();
   }
@@ -114,30 +115,30 @@ bool comp_turn(Boats &enemy, Boats &comp)
 {
   int boat_hit, won = 0;
 
-  cout << "\n The computers ship board: \n";
+  std::cout << "\n The computers ship board: \n" << endl;
   comp.print_ship_board();
   
-  cout << "\n The computers target board: \n";
+  std::cout << "\n The computers target board: \n" << endl;
   enemy.print_target_board();
 
   boat_hit = enemy.auto_fire();
-  cout << "\n The computers target board: \n";
+  std::cout << "\n The computers target board: \n" << endl;
   enemy.print_target_board();
   
   if (boat_hit > -1) 
   {
     if(enemy.boat_sank(boat_hit))
     {
-      cout << "The boat has been sank! \n";
+      std::cout << "The boat has been sank! \n" << endl;
       if(enemy.all_boats_sank()) 
       {
-        cout << "All boats have sank! \n";
+        std::cout << "All boats have sank! \n" << endl;
         won = 1;
       }
     }
   }
   
-  cout << "\n Press enter to end the turn...";
+  std::cout << "\n Press enter to complete and end the turn!" << endl;
   
   char temp = cin.get();
   cin.clear();
@@ -152,7 +153,7 @@ void playerVcomputer(Boats &_player, Boats &_comp)
   while (player_won == 0 && comp_won == false) 
   {
     system("clear");
-    cout << "\n IT'S YOUR TURN: \n";
+    std::cout << "\n IT'S YOUR TURN: \n" << endl;
     player_won = player1_turn(_player, _comp);
     //Prints that it is Player 1's turn
     if (player_won!=0) 
@@ -160,28 +161,28 @@ void playerVcomputer(Boats &_player, Boats &_comp)
       continue;
     }
     system("clear");
-    cout << "\n IT'S THE COMPUTERS TURN:\n ";
+    std::cout << "\n IT'S THE COMPUTERS TURN:\n " << endl;
     comp_won = comp_turn(_player, _comp);
     //Prints that its the AI's turn 
   }
 
   if (player_won == 1) 
   {
-    cout << "\n YOU WON! \n\n";
+    std::cout << "\n YOU WON! \n\n" << endl;
     //Prints a winning message
   }
   else if (player_won == -1) 
   {
-    cout << "\n Quiting game... \n\n";
+    std::cout << "\n Quiting game... \n\n" << endl;
     //Prints that the game is in the process of stopping
   }
   else 
   {
-    cout << "\n You lost! :(\n\n";
+    std::cout << "\n You lost!Better luck next time! :(\n\n" << endl;
     //Prints that the player has lost
   }
 
-  cout << "\n Press enter to return to menu...";
+  std::cout << "\n Press enter to return to menu..." << endl;
   //Prints message to the player to enter to return to menu
   char temp = cin.get();
   cin.clear();

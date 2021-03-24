@@ -127,18 +127,22 @@ void Board::print_target_board()
     if (a>=26 && a<52)
     {
       std::cout << setw(3) << 'A' << (char)((a-26)+'A') << endl;
+      //Prints the set width for specific characters
     }
     else if (a>=52 && a<78) 
     {
       std::cout << setw(3) << 'B' << (char)((a-52)+'A')<< endl;
+      //Prints the set width for specific characters
     }
     else if (a>=78) 
     {
       std::cout << setw(3) << 'C' << (char)((a-78)+'A') << endl;
+      //Prints the set width for specific characters
     }
     else 
     {
       std::cout << setw(3) << " " << (char)(a +'A') << endl;
+      //Prints the set width for specific characters
     }
   }
   std::cout << endl;
@@ -160,14 +164,17 @@ void Board::print_target_board()
       if(board[i][counter] == miss )
       {
         std::cout << setw(2) << "M" << setw(2) << "|" << endl;
+        //Prints the set width for specific characters
       }
       else if(board[i][counter] == hit ) 
       {
         std::cout << setw(2) << "H" << setw(2) << "|"<< endl;
+        //Prints the set width for specific characters
       }
       else 
       {
         std::cout << setw(4) << " |" << endl;
+        //Prints the width of the Gameboard
       }
     }
     std::cout << "\n"<< endl;
